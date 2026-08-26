@@ -303,6 +303,13 @@ header {
     transition: color var(--transition-slow);
 }
 
+.logo-img {
+    height: 38px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
 .logo-text {
     font-family: var(--font-heading);
     font-size: 1.8rem;
@@ -484,7 +491,7 @@ html[data-theme="light"] .icon-moon { display: block; }
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1600');
+    background-image: url('https://www.vmcdn.ca/f/files/barrietoday/images/miscellaneous-stock-images/08132023hwy400harvierb.jpeg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -497,12 +504,12 @@ html[data-theme="light"] .icon-moon { display: block; }
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(13, 17, 26, 0.7) 0%, rgba(13, 17, 26, 0.4) 60%, rgba(13, 17, 26, 0.95) 100%);
+    background: linear-gradient(180deg, rgba(13, 17, 26, 0.8) 0%, rgba(13, 17, 26, 0.5) 50%, rgba(13, 17, 26, 0.95) 100%);
     z-index: 1;
 }
 
 html[data-theme="light"] .hero-bg-overlay {
-    background: linear-gradient(180deg, rgba(248, 250, 252, 0.6) 0%, rgba(248, 250, 252, 0.3) 60%, rgba(248, 250, 252, 0.95) 100%);
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.8) 0%, rgba(248, 250, 252, 0.55) 50%, rgba(248, 250, 252, 0.98) 100%);
 }
 
 .hero-content {
@@ -537,7 +544,7 @@ html[data-theme="light"] .hero-bg-overlay {
 }
 
 html[data-theme="light"] .hero-title {
-    text-shadow: none;
+    text-shadow: 0 0 15px rgba(248, 250, 252, 0.95), 0 0 5px rgba(248, 250, 252, 0.8);
 }
 
 @media (max-width: 992px) {
@@ -564,7 +571,7 @@ html[data-theme="light"] .hero-title {
 
 html[data-theme="light"] .hero-description {
     color: #0F172A; /* Strong high-contrast dark text for light mode */
-    text-shadow: none;
+    text-shadow: 0 0 10px rgba(248, 250, 252, 0.95);
 }
 
 @media (max-width: 576px) {
@@ -798,6 +805,9 @@ html[data-theme="light"] .hero-description {
     overflow: hidden;
     transition: all var(--transition-medium);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .product-card:hover {
@@ -808,7 +818,7 @@ html[data-theme="light"] .hero-description {
 }
 
 .product-img-container {
-    height: 280px;
+    height: 340px;
     overflow: hidden;
     position: relative;
 }
@@ -826,6 +836,9 @@ html[data-theme="light"] .hero-description {
 
 .product-info {
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .product-name {
@@ -852,6 +865,8 @@ html[data-theme="light"] .hero-description {
     text-transform: uppercase;
     color: var(--accent-gold);
     transition: color var(--transition-fast);
+    margin-top: auto;
+    align-self: flex-start;
 }
 
 .arrow-icon {
@@ -875,6 +890,11 @@ html[data-theme="light"] .hero-description {
     background-position: center;
     background-attachment: fixed;
     padding: 140px 0;
+}
+
+.highlight-section .container {
+    position: relative;
+    z-index: 2;
 }
 
 .highlight-overlay {
@@ -988,8 +1008,22 @@ html[data-theme="light"] .highlight-overlay {
 }
 
 @media (max-width: 992px) {
+    .highlight-overlay {
+        background: rgba(13, 17, 26, 0.92);
+    }
+    html[data-theme="light"] .highlight-overlay {
+        background: rgba(248, 250, 252, 0.94);
+    }
     .highlight-image-container {
-        display: none;
+        display: block;
+        height: 350px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .highlight-image-container {
+        height: 250px;
     }
 }
 
@@ -1039,13 +1073,25 @@ html[data-theme="light"] .highlight-overlay {
     width: 100%;
 }
 
-.step-num {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    color: var(--accent-gold);
-    line-height: 1;
+.step-img-container {
+    width: 100%;
+    height: 180px;
     margin-bottom: 20px;
-    font-weight: 300;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.step-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.process-step:hover .step-img {
+    transform: scale(1.05);
 }
 
 .step-title {
@@ -1221,7 +1267,13 @@ html[data-theme="light"] .highlight-overlay {
 
 @media (max-width: 576px) {
     .sustainability-images {
-        display: none;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 30px;
+    }
+    .sus-image-card {
+        height: 240px;
     }
 }
 
@@ -1729,6 +1781,10 @@ html[data-theme="light"] .copyright {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+    }
+    .journal-title, .journal-excerpt {
+        height: auto;
+        -webkit-line-clamp: unset;
     }
 }
 
