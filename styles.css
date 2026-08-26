@@ -335,6 +335,12 @@ header {
     gap: 35px;
 }
 
+@media (max-width: 1200px) {
+    .nav-links {
+        gap: 18px;
+    }
+}
+
 .nav-link {
     font-size: 0.75rem;
     font-weight: 500;
